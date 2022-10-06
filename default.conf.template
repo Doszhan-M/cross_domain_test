@@ -1,0 +1,18 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    access_log /var/log/nginx/test_pk_access.log;
+    error_log /var/log/nginx/test_pk_error.log;
+
+    client_max_body_size 7M;
+
+    location / {
+        proxy_pass http://backend:8000;
+        proxy_set_header Origin http://127.0.0.1:3000;
+        proxy_hide_header Access-Control-Allow-Origin;
+        add_header Access-Control-Allow-Origin $http_origin;
+    }
+
+
+}

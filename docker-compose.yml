@@ -2,15 +2,57 @@ version: '3.8'
 
 services:
 
-  traefik:
-    image: traefik:v2.9
+  # traefik:
+  #   image: traefik:v2.9
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - ./certs/:/etc/traefik/certs/:ro
+  #     - ./conf/traefik_static_conf.yml:/traefik.yml:ro
+  #     - ./conf/:/etc/traefik/conf/:ro
+
+  backend:
+    build:
+      context: ./back
+      dockerfile: ./backend.dockerfile
     restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./certs/:/etc/traefik/certs/:ro
-      - ./conf/traefik_static_conf.yml:/traefik.yml:ro
-      - ./conf/:/etc/traefik/conf/:ro
+      - ./back/backend:/backend/
+    ports:
+      - "8000:8000"
+    # labels:
+    #   - traefik.enable=true 
+    #   - traefik.http.routers.backend.entrypoints=websecure
+    #   # - traefik.http.routers.backend.rule=Host(`pk-local.backend`) && PathPrefix(`/api/web`, `/pk_admin`, `/static`)
+    #   - traefik.http.routers.backend.rule=Host(`pk-local.backend`) && PathPrefix(`/api`, `/pk_admin`)
+    #   - traefik.http.routers.backend.tls=true 
+    #   - traefik.http.services.backend.loadbalancer.server.port=8000 
+
+  frontend:
+    stdin_open: true
+    build: ./frontend
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    # labels:
+    #   - traefik.enable=true
+    #   - traefik.http.routers.frontend.entrypoints=websecure
+    #   - traefik.http.routers.frontend.rule=Host(`pk-local.backend`)
+    #   # - traefik.http.routers.frontend.rule=Host(`localhost`, `pk-local.backend`)
+    #   - traefik.http.routers.frontend.tls=true
+    #   - traefik.http.services.frontend.loadbalancer.server.port=3000
+
+  proxy:
+    image: nginx:alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template
