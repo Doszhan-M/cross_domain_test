@@ -1,0 +1,14 @@
+**/.idea/
+**/venv/
+**/__pycache__/
+**/pgdata
+**/redis_data/
+celerybeat-schedule
+*.log*
+fernet.pem
+private_key.pem
+public_key.pem
+
+test1.py
+test2.py
+test3.py

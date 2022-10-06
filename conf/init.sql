@@ -1,0 +1,3 @@
+CREATE DATABASE keycloak;
+CREATE DATABASE backend;
+CREATE DATABASE parsers;
