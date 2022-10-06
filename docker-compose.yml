@@ -53,7 +53,7 @@ services:
   nginx:
     image: nginx:1.23.1
     ports:
-      - 4000:443
+      - 3000:443
     volumes:
       - ./conf/default.conf.template:/etc/nginx/templates/default.conf.template
       - ./certs:/etc/nginx/certs
