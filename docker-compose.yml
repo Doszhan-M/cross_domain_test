@@ -58,3 +58,5 @@ services:
       - ./conf/default.conf.template:/etc/nginx/templates/default.conf.template
       - ./certs:/etc/nginx/certs
 
+
+https://10.192.168.5:3000/api/web/accounts/sso_token/
