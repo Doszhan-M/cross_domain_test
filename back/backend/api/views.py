@@ -31,12 +31,8 @@ def login_view(request):
 
     login(request, user)
     # return JsonResponse({'detail': 'Successfully logged in.'})
-    response = HttpResponseRedirect('http://localhost:8080/admin')
-    response.set_cookie('key', 'value')
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "GET, OPTIONS, POST"
-    response["Access-Control-Max-Age"] = "1000"
-    response["Access-Control-Allow-Headers"] = "X-Requested-With, Content-Type, X-CSRFToken"
+    response = HttpResponsePermanentRedirect('http://127.0.0.1:3000')
+
     return response
 
 

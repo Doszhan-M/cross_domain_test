@@ -134,20 +134,15 @@ SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://pk-local.backend:3000',
-    'https://pk-local.backend',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://127.0.0.1:3000',
+
+# ]
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken',]
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://pk-local.backend:3000',
-    'https://pk-local.backend',
+
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
