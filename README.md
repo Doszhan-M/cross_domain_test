@@ -1,4 +1,1 @@
-# Cross Domain SPA and Server in one domain with nginx:
-```
-
-```
+## Cross domain SPA and Server in one domain with nginx
