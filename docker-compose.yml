@@ -1,62 +1,18 @@
 version: '3.8'
 
+networks:
+  external-pk_network:
+    external: true
+
 services:
-
-  # traefik:
-  #   image: traefik:v2.9
-  #   restart: unless-stopped
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - /var/run/docker.sock:/var/run/docker.sock:ro
-  #     - ./certs/:/etc/traefik/certs/:ro
-  #     - ./conf/traefik_static_conf.yml:/traefik.yml:ro
-  #     - ./conf/:/etc/traefik/conf/:ro
-
-  # backend:
-  #   build:
-  #     context: ./back
-  #     dockerfile: ./backend.dockerfile
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ./back/backend:/backend/
-  #   ports:
-  #     - "8000:8000"
-  #   # labels:
-  #   #   - traefik.enable=true 
-  #   #   - traefik.http.routers.backend.entrypoints=websecure
-  #   #   # - traefik.http.routers.backend.rule=Host(`pk-local.backend`) && PathPrefix(`/api/web`, `/pk_admin`, `/static`)
-  #   #   - traefik.http.routers.backend.rule=Host(`pk-local.backend`) && PathPrefix(`/api`, `/pk_admin`)
-  #   #   - traefik.http.routers.backend.tls=true 
-  #   #   - traefik.http.services.backend.loadbalancer.server.port=8000 
-
-  # frontend:
-  #   stdin_open: true
-  #   build: ./frontend
-  #   volumes:
-  #     - ./frontend:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - NODE_ENV=development
-  #   # labels:
-  #   #   - traefik.enable=true
-  #   #   - traefik.http.routers.frontend.entrypoints=websecure
-  #   #   - traefik.http.routers.frontend.rule=Host(`pk-local.backend`)
-  #   #   # - traefik.http.routers.frontend.rule=Host(`localhost`, `pk-local.backend`)
-  #   #   - traefik.http.routers.frontend.tls=true
-  #   #   - traefik.http.services.frontend.loadbalancer.server.port=3000
 
   nginx:
     image: nginx:1.23.1
     ports:
       - 3000:443
+    networks:
+      - external-pk_network
     volumes:
       - ./conf/default.conf.template:/etc/nginx/templates/default.conf.template
       - ./certs:/etc/nginx/certs
 
-
-https://10.192.168.5:3000/api/web/accounts/sso_token/
