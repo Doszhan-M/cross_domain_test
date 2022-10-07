@@ -11,7 +11,7 @@ server {
     client_max_body_size 7M;
 
     location / {
-        proxy_pass http://10.192.168.15:3001;
+        proxy_pass http://10.192.168.8:3001;
 
     }
 
