@@ -11,3 +11,5 @@ docker service logs -f pk_nginx_dev_nginx
 
 
 proxy_pass http://10.192.168.8:3001;
+
+https://id.uchet.kz/.idp/oauth2/auth?client_id=pk2-test&redirect_uri=https://dev-pk.uchet.kz/api/web/accounts/sso_token/&response_type=code&state=https://dev-pk.uchet.kz
