@@ -4,6 +4,7 @@ networks:
   external-pk_network:
     external: true
 
+
 services:
 
   nginx:
@@ -15,4 +16,3 @@ services:
     volumes:
       - ./conf/default.conf.template:/etc/nginx/templates/default.conf.template
       - ./certs:/etc/nginx/certs
-
