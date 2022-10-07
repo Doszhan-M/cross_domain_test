@@ -1,7 +1,7 @@
 {
   // - - - Настроить  цвета statusBar внизу - - - - - - - - - - 
   "workbench.colorCustomizations": {
-    "statusBar.background": "#333333",
+    "statusBar.background": "#1eb852",
   },
   // - - - Настройки pythonPath - - - - - - - - - - 
   "python.defaultInterpreterPath": "./venv/bin/python",
@@ -13,14 +13,7 @@
     "--experimental"
   ],
   "editor.snippetSuggestions": "top",
-  // // - - - Настройки pylint - - - - - - - - - - 
-  // "python.linting.pylintEnabled": true,
-  // "python.linting.pylintArgs": [
-  //     "--disable=C0116", // missing docstring
-  //     "--load-plugins=pylint_django",
-  //     // "pylint_celery",
-  //     "--django-settings-module=pk_back.pk_backend.conf.settings",
-  //  ],
+
   // - - - Настройки cSpell - - - - - - - - - - - - -
   "cSpell.language": "en,ru",
   "cSpell.words": [
@@ -50,6 +43,7 @@
     "dereg",
     "deregdate",
     "digestmod",
+    "dockupdater",
     "doseq",
     "Doszhan",
     "dotenv",
