@@ -1,8 +1,9 @@
-mkcert --cert-file ./certs/nginx.crt --key-file ./certs/nginx.key 10.192.168.5
+mkcert --cert-file ./certs/nginx.crt --key-file ./certs/nginx.key pk.localhost
 
 docker stack deploy --with-registry-auth -c docker-stack-nginx.yml pk_nginx_dev 
 docker stack rm pk_nginx_dev
 
 docker service logs -f pk_nginx_dev_nginx
 
-proxy_pass http://10.192.168.8:3001;
+https://github.com/FiloSottile/mkcert
+https://stackoverflow.com/questions/31324981/how-to-access-host-port-from-docker-container/43541732#43541732
