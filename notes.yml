@@ -4,3 +4,5 @@ docker stack deploy --with-registry-auth -c docker-stack-nginx.yml pk_nginx_dev
 docker stack rm pk_nginx_dev
 
 docker service logs -f pk_nginx_dev_nginx
+
+proxy_pass http://10.192.168.8:3001;
