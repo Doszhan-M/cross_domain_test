@@ -1,15 +1,6 @@
 mkcert --cert-file ./certs/nginx.crt --key-file ./certs/nginx.key 10.192.168.5
 
-
-https://10.192.168.5:3000/api/web/accounts/sso_token/
-
-
 docker stack deploy --with-registry-auth -c docker-stack-nginx.yml pk_nginx_dev 
 docker stack rm pk_nginx_dev
 
 docker service logs -f pk_nginx_dev_nginx
-
-
-proxy_pass http://10.192.168.8:3001;
-
-https://id.uchet.kz/.idp/oauth2/auth?client_id=pk2-test&redirect_uri=https://dev-pk.uchet.kz/api/web/accounts/sso_token/&response_type=code&state=https://dev-pk.uchet.kz

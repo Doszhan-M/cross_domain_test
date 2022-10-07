@@ -4,9 +4,7 @@ networks:
   external-pk_network:
     external: true
 
-
 services:
-
   nginx:
     image: nginx:1.23.1
     ports:
